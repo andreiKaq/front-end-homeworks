@@ -1,15 +1,37 @@
-const button = document.querySelector('.btn1');
+const previous_btn = document.querySelector('.previous')
+const next_btn = document.querySelector('.next')
+const profile_cards = document.querySelectorAll('.profile-card')
+
+let counter = 0
 
 
-button.addEventListener('click', () => {
 
-    const card_name = prompt('Write your name!')
-    const card_content = prompt('White few word about yourself')
+function button_handler() {
 
-    const user_name = document.querySelector('.userName')
-    const user_content = document.querySelector('.userContent')
-   
-    user_name.textContent = card_name
-    user_content.textContent = card_content
-});
+    next_btn.addEventListener('click', () => {
 
+    if (counter < profile_cards.length - 1) {
+        
+        profile_cards[counter].classList.add('hidden')
+        counter++
+        profile_cards[counter].classList.remove('hidden')
+    } else {
+        alert('Нету следущих карточек')
+    }
+    
+
+})
+
+    previous_btn.addEventListener('click', () => {
+        if (counter > 0) {
+            profile_cards[counter].classList.add('hidden')
+            counter--
+            profile_cards[counter].classList.remove('hidden')
+        } else {
+            alert('Нету преведущих карточек')
+        }
+    })
+
+}
+
+button_handler()
